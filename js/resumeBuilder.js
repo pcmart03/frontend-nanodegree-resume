@@ -78,6 +78,7 @@ var education = {
     "url": "https://www.udacity.com/"
   }],
   "display": function() {
+    //Display Schools
     for (school in education.schools) {
       $("#education").append(HTMLschoolStart);
       var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -92,8 +93,27 @@ var education = {
       for (major in majors) {
         var formattedmajor = HTMLschoolMajor.replace("%data%", majors[major]);
         $(".education-entry:last").append(formattedmajor);
-      }
+      };
+      $(".education-entry:last").find("a").attr("href", education.schools[school].url);
+    };
+    // Display Online courses
+    $("#education").append(HTMLonlineClasses);
+    for (course in education.onlineCourses) {
+      $("#education").append(HTMLschoolStart);
+      var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+      var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+      var formattedCourseSchool = formattedTitle + formattedSchool;
+      $(".education-entry:last").append(formattedCourseSchool);
+      var formattedDate = HTMLonlineDates.replace("%data%", education.onlineCourses[course].date);
+      $(".education-entry:last").append(formattedDate);
+      var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+      $(".education-entry:last").append(formattedURL);
+      $(".education-entry:last").find("a").attr("href", education.onlineCourses[course].url);
     }
   } //end education.display();
 } //end education
 education.display();
+
+var work = {
+
+} //end work
