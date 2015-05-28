@@ -6,7 +6,7 @@ var bio = {
     "email": "pcmart03@gmail.com",
     "github": "pcmart03",
     "twitter": "@NoTwitter",
-    "location": "Fairfax, Virginia"
+    "location": "Arlington, VA"
   }],
   "welcomeMessage": "Hello, and welcome to my resume project",
   "skills": ["Copy Writing", "HTML", "CSS", "Git", "markdown", "jekyll"],
@@ -46,5 +46,54 @@ var bio = {
     };
   } //End bio.display();
 } //End Bio
-
 bio.display();
+
+var education = {
+  "schools": [{
+    "name": "The College of William And Mary",
+    "location": "Williamsburg, VA",
+    "degree": "BA",
+    "majors": ["English"],
+    "dates": 2003,
+    "url": "http://www.wm.edu/",
+  },
+  {
+    "name": "George Mason University",
+    "location": "Fairfax, VA",
+    "degree": "MFA",
+    "majors": ["Creative Writing", "Fiction"],
+    "dates": 2009,
+    "url": "http://www.gmu.edu/",
+  }],
+  "onlineCourses": [{
+    "title": "Intro to HTML and CSS",
+    "school": "Udacity",
+    "date": 2015,
+    "url": "https://www.udacity.com/"
+  },
+  {
+    "title": "Responsive Web Design Fundamentals",
+    "school": "Udacity",
+    "date": 2015,
+    "url": "https://www.udacity.com/"
+  }],
+  "display": function() {
+    for (school in education.schools) {
+      $("#education").append(HTMLschoolStart);
+      var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+      var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+      var formattedSchoolDegree = formattedSchoolName + formattedDegree;
+      $(".education-entry:last").append(formattedSchoolDegree);
+      var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+      $(".education-entry:last").append(formattedDates);
+    var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+    $(".education-entry:last").append(formattedLocation);
+    var majors = education.schools[school].majors;
+      for (major in majors) {
+        var formattedmajor = HTMLschoolMajor.replace("%data%", majors[major]);
+        $(".education-entry:last").append(formattedmajor);
+      }
+    }
+  } //end education.display();
+} //end education
+education.display();
