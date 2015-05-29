@@ -115,5 +115,69 @@ var education = {
 education.display();
 
 var work = {
+  "jobs": [{
+    "employer": "CRGT",
+    "title": "Web Content Writer",
+    "location": "Washington, DC",
+    "dates":"2014-Present",
+    "description": "Locavore Portland Etsy PBR wayfarers, selfies hoodie. Cronut bitters street art, Neutra keffiyeh tattooed photo booth normcore Carles wayfarers freegan put a bird on it tofu shabby chic. Austin hoodie Vice iPhone, ugh Godard fanny pack flannel YOLO twee. Farm-to-table direct trade umami banh mi squid 3 wolf moon, before they sold out mixtape vinyl slow-carb asymmetrical. Craft beer fap cray, wayfarers art party DIY chambray pop-up Etsy bespoke XOXO vegan."
+  },
+  {
+    "employer": "Caveon",
+    "title": "Assessment Development Manager",
+    "location": "Fairfax, VA",
+    "dates": "2012-2014",
+    "description": "Locavore Portland Etsy PBR wayfarers, selfies hoodie. Cronut bitters street art, Neutra keffiyeh tattooed photo booth normcore Carles wayfarers freegan put a bird on it tofu shabby chic. Austin hoodie Vice iPhone, ugh Godard fanny pack flannel YOLO twee. Farm-to-table direct trade umami banh mi squid 3 wolf moon, before they sold out mixtape vinyl slow-carb asymmetrical. Craft beer fap cray, wayfarers art party DIY chambray pop-up Etsy bespoke XOXO vegan."
+  },
+  {
+    "employer": "The Motley Fool",
+    "title": "Contract Writer",
+    "location": "Alexandria, VA",
+    "dates": "2011-2012",
+    "description": "Locavore Portland Etsy PBR wayfarers, selfies hoodie. Cronut bitters street art, Neutra keffiyeh tattooed photo booth normcore Carles wayfarers freegan put a bird on it tofu shabby chic. Austin hoodie Vice iPhone, ugh Godard fanny pack flannel YOLO twee. Farm-to-table direct trade umami banh mi squid 3 wolf moon, before they sold out mixtape vinyl slow-carb asymmetrical. Craft beer fap cray, wayfarers art party DIY chambray pop-up Etsy bespoke XOXO vegan."
+  }
+  ],
+  "display": function() {
+    for (job in work.jobs) {
+  $("#workExperience").append(HTMLworkStart);
 
+  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+  var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+  var formattedEmployerTitle = formattedEmployer + formattedTitle;
+  $(".work-entry:last").append(formattedEmployerTitle);
+  var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates)
+  $(".work-entry:last").append(formattedDates);
+  var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+  $(".work-entry:last").append(formattedLocation);
+  var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description)
+  $(".work-entry:last").append(formattedDescription);
+    };
+  } //end work.display();
 } //end work
+work.display();
+
+var projects = {
+  "projects": [{
+    "title": "Awesome Project No. 1",
+    "dates": "May 2015",
+    "description": "Yr Neutra Austin polaroid. Readymade leggings Shoreditch Brooklyn mumblecore, banh mi squid. Tumblr Austin synth, mixtape blog keffiyeh heirloom four dollar toast hoodie bespoke letterpress direct trade vinyl occupy. ",
+    "images": ["images/197x148.gif","images/197x148.gif"]
+  }],
+  "display": function() {
+    for (project in projects.projects) {
+      $("#projects").append(HTMLprojectStart);
+      var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+      $(".project-entry:last").append(formattedProjectTitle);
+      var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+      $(".project-entry:last").append(formattedProjectDates);
+      var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+      $(".project-entry:last").append(formattedProjectDescription);
+      var images = projects.projects[project].images;
+      for (image in images) {
+        var formattedProjectImage = HTMLprojectImage.replace("%data%", images[image]);
+        $(".project-entry:last").append(formattedProjectImage);
+      };
+    };
+  } //end projects.dispay();
+}
+projects.display();
