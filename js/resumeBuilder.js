@@ -181,3 +181,9 @@ var projects = {
   } //end projects.dispay();
 }
 projects.display();
+
+//Add map to resume
+addMap();
+function addMap() {
+  $("#mapDiv").append(googleMap);
+}
