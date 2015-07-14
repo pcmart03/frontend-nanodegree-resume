@@ -122,7 +122,10 @@ function initializeMap() {
   written for bio, education, and work.
   */
   function locationFinder() {
-
+    //point to data in refactored code
+    var bio = controller.getBio();
+    var education = controller.getEducation();
+    var work = controller.getWork();
     // initializes an empty array
     var locations = [];
 
